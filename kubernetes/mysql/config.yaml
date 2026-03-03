@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  database_name: students_database
+  db_server: mysql-service.svc.cluster.local

@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-mysql-app-deployment
+  labels:
+    app: java-mysql-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-mysql-app
+  template:
+    metadata:
+      labels:
+        app: java-mysql-app
+    spec:
+      # kubenrnetes secret - type docker-registry
+      imagePullSecrets:
+        - name: dockerhub-creds
+      containers:
+        - name: java-mysql-app
+          image: ${REPO_NAME}/{IMAGE_NAME}:${TAG}
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql_user
+            - name: DB_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql_password
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: database_name
+            - name: DB_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: db_server
