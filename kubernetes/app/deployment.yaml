@@ -20,6 +20,7 @@ spec:
       containers:
         - name: java-mysql-app
           image: "${REPO_NAME}/${IMAGE_NAME}:${TAG}"
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           livenessProbe:
