@@ -19,7 +19,7 @@ spec:
         - name: dockerhub-creds
       containers:
         - name: java-mysql-app
-          image: ${REPO_NAME}/{IMAGE_NAME}:${TAG}
+          image: "${REPO_NAME}/${IMAGE_NAME}:${TAG}"
           ports:
             - containerPort: 8080
           livenessProbe:
