@@ -4,4 +4,4 @@ metadata:
   name: mysql-config
 data:
   database_name: students_database
-  db_server: mysql-service.svc.cluster.local
+  db_server: mysql-service.default.svc.cluster.local
