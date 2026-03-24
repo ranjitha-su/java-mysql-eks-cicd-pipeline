@@ -12,8 +12,7 @@ This project demonstrates how to:
 - Expose the application using am **Ingress Controller**
 - Scale the application by adjusting replica counts based on traffic
 
-This is a **DevOps project** focused on understanding Kubernetes deployment flow end-to-end without CI/CD automation.  
-(Jenkins will be introduced in the next project.)
+This is a **DevOps project** focused on understanding Kubernetes deployment flow end-to-end.  
 
 ---
 
@@ -101,10 +100,10 @@ kubectl get svc
 
 ---
 
-## Liveness and readiness probes
+## ✅ Liveness and readiness probes
 
 Liveness probe: To ensure the app is up and running 
-Readiness probe: To ensure the app is ready to server traffic after successfully establishing connection with mysql database
+Readiness probe: To ensure the app is ready to serve traffic after successfully establishing connection with mysql database
 
 ## ✅ Scaling
 
@@ -216,7 +215,7 @@ In the next project:
 - Automate build & push process
 - Implement full CI/CD pipeline
 - Integrate with ECR instead of DockerHub
-- Add automated deployment to EKS
+- Add automated CI/CD deployment to EKS
 
 ---
 
